@@ -1,4 +1,6 @@
 class Board
+  attr_accessor :guess_list
+
   def initialize(code_maker)
     @secret_code = code_maker.secret_code
     @guess_list = []
