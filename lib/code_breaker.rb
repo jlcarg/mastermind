@@ -1,9 +1,10 @@
 class CodeBreaker
-  attr_reader :name, :number_of_guesses
+  attr_reader :name, :number_of_guesses, :previous_guesses
 
   def initialize(name)
     @name = name
     @number_of_guesses = 0
+    @previous_guesses = []
   end
 
   def make_a_guess(board)
@@ -23,9 +24,22 @@ class CodeBreaker
 
   def handle_guess(guess, board)
     if guess_is_valid?(guess)
-      board.guess_list << guess
+      guess_in_colors = translate_guess(guess)
+
+      board.guess_list << guess_in_colors
+      @previous_guesses << guess_in_colors
+      @number_of_guesses += 1
     else
       puts 'Input not acceptable, please read the instructions again!'
     end
+  end
+
+  def translate_guess(guess)
+    color_hash = { '1' => 'Red', '2' => 'Blue', '3' => 'Green', '4' => 'Yellow', '5' => 'Purple', '6' => 'Orange' }
+    translated_guess = []
+    guess.each_with_index do |number, idx|
+      translated_guess[idx] = color_hash[number]
+    end
+    translated_guess
   end
 end
