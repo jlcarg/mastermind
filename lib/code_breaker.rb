@@ -19,7 +19,7 @@ class CodeBreaker
   end
 
   def guess_is_valid?(guess)
-    guess.length == 4 && guess.all? { |number| number.to_i.positive? && number.to_i < 6 }
+    guess.length == 4 && guess.all? { |number| number.to_i.positive? && number.to_i <= 6 }
   end
 
   def handle_guess(guess, board)

@@ -7,14 +7,18 @@ class Board
   end
 
   def correct_guess?
-    puts 'You broke the secret code, congratulations!!' if @guess_list[-1] == @secret_code
+    @guess_list[-1] == @secret_code
   end
 
   def give_feedback
-    exact_matches = check_num_exact_matches
-    partial_matches = check_num_matches - exact_matches
-    puts "Number of exact matches in your last guess: #{exact_matches}"
-    puts "Number of color matches(correct color, but wrong position), in your last guess: #{partial_matches}"
+    if correct_guess?
+      puts "Congratulations! You cracked the secret code!\nThe secret code was: #{@guess_list[-1]}"
+    else
+      exact_matches = check_num_exact_matches
+      partial_matches = check_num_matches - exact_matches
+      puts "Number of exact matches in your last guess: #{exact_matches}"
+      puts "Number of color matches(correct color, but wrong position), in your last guess: #{partial_matches}"
+    end
   end
 
   def check_num_exact_matches

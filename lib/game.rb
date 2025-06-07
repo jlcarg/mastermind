@@ -2,13 +2,21 @@ require_relative 'code_maker'
 require_relative 'code_breaker'
 require_relative 'board'
 
-code_maker = CodeMaker.new
-code_breaker = CodeBreaker.new('player1')
-board = Board.new(code_maker)
+class Game
+  def initialize
+    @code_maker = CodeMaker.new
+    @code_breaker = CodeBreaker.new('player1')
+    @board = Board.new(@code_maker)
+  end
 
-p 'secret code is:'
-p board.secret_code
-code_breaker.make_a_guess(board)
-p 'last guesses are:'
-p code_breaker.previous_guesses
-board.give_feedback
+  def start
+    until @board.correct_guess? || @code_breaker.number_of_guesses > 12
+
+      @code_breaker.make_a_guess(@board)
+      p 'last guesses are:'
+      p @code_breaker.previous_guesses
+      @board.give_feedback
+    end
+    p @board.secret_code
+  end
+end
