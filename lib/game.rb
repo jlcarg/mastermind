@@ -14,7 +14,7 @@ class Game
   def start
     until @board.correct_guess? || @code_breaker.number_of_guesses > 12
 
-      @code_breaker.make_a_guess(@board)
+      @code_breaker.take_a_guess(@board)
       p 'last guesses are:'
       p @code_breaker.previous_guesses
       @board.give_feedback
