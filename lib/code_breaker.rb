@@ -2,10 +2,10 @@ require_relative 'input_helper'
 
 class CodeBreaker
   include InputHelper
-  attr_reader :name, :number_of_guesses, :previous_guesses
+  attr_reader :name, :number_of_guesses, :previous_guesses, :breaker
 
-  def initialize(name)
-    @name = name
+  def initialize(choice)
+    @breaker = choice
     @number_of_guesses = 0
     @previous_guesses = []
   end
