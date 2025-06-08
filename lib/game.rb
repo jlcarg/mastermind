@@ -3,8 +3,8 @@ require_relative 'code_breaker'
 require_relative 'board'
 
 class Game
-  def initialize
-    @code_maker = CodeMaker.new
+  def initialize(choice)
+    @code_maker = CodeMaker.new(choice)
     @code_breaker = CodeBreaker.new('player1')
     @board = Board.new(@code_maker)
   end

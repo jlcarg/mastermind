@@ -1,25 +1,36 @@
-class CodeMaker
-  attr_reader :secret_code, :maker
+require_relative 'input_helper'
 
-  def initialize
-    @maker = nil
-    # @secret_code = nil
+class CodeMaker
+  include InputHelper
+  attr_accessor :secret_code
+  attr_reader :maker
+
+  def initialize(choice)
+    @maker = choice
+    @secret_code = [nil]
     # Fixed value to help with testing for now
-    @secret_code = %w[Red Red Blue Purple]
-    # @secret_code = %w[Red Blue Green Yellow Purple Orange].sample(4)
+    # @secret_code = %w[Red Red Blue Purple]
+    case @maker
+    when '1'
+      input_human_secret_code
+    when '2'
+      generate_random_secret_code
+    end
   end
 
-  # def make_code
-  #   case @maker
-  #   when 'Player'
-  #     puts 'Please select a code'
-  #   end
-  # end
-  def get_code_by_human
-    puts "Please select a secret code of 4 colors\nYou can repeat colors!\n"\
-         "Select the colors using the corresponding number:\n"\
-         "1-Red, 2-Blue, 3-Green, 4-Yellow, 5-Purple, 6-Orange\n"\
-         "Example: 1125 = Red, Red, Blue, Purple\n"
-    @secret_code = gets.chomp.split('')
+  def generate_random_secret_code
+    @secret_code = %w[Red Blue Green Yellow Purple Orange].sample(4)
+    puts 'Secret code recorded!'
+  end
+
+  def input_human_secret_code
+    secret_code = [nil]
+    until choice_is_valid?(secret_code)
+      prompt_for('secret code')
+      secret_code = gets.chomp.split('')
+      show_error_message unless choice_is_valid?(secret_code)
+    end
+    @secret_code = translate_code(secret_code)
+    puts 'Alright, your secret code was recorded!'
   end
 end

@@ -6,6 +6,10 @@ module InputHelper
          "Example: 1125 = Red, Red, Blue, Purple\n"
   end
 
+  def show_error_message
+    puts 'Input not acceptable, please read the instructions again!'
+  end
+
   def choice_is_valid?(code)
     code.length == 4 && code.all? { |number| number.to_i.positive? && number.to_i <= 6 }
   end
