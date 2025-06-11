@@ -8,8 +8,6 @@ class CodeMaker
   def initialize(choice)
     @maker = choice
     @secret_code = [nil]
-    # Fixed value to help with testing for now
-    # @secret_code = %w[Red Red Blue Purple]
     case @maker
     when '1'
       input_human_secret_code
@@ -30,6 +28,7 @@ class CodeMaker
       secret_code = gets.chomp.split('')
       show_error_message unless choice_is_valid?(secret_code)
     end
+    system('clear')
     @secret_code = translate_code(secret_code)
     puts 'Alright, your secret code was recorded!'
   end
