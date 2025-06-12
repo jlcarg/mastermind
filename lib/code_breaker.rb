@@ -63,7 +63,7 @@ class CodeBreaker
   end
 
   def prompt_downloading_super_computer_memory
-    puts 'Th1s w1Ll t4k3 t0o l0ng... D0wnl04d1ng suP3r M3m0ry'
+    puts '[Computer]: Th1s w1Ll t4k3 t0o l0ng... D0wnl04d1ng suP3r M3m0ry'
     sleep 2
     puts 'Progress: [########-------------------------]'
     sleep 2
@@ -77,7 +77,8 @@ class CodeBreaker
       prompt_downloading_super_computer_memory
       take_computer_guess_with_memory(board)
     elsif @number_of_guesses > 3
-      puts "Mmmm... let's see... maybe I should guess this one"
+      puts "[Computer]: Mmmm... Getting closer, let's see... maybe I should guess this one?"
+      sleep 1
       take_computer_guess_with_memory(board)
     else
       take_computer_random_guess(board)
