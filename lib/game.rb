@@ -15,8 +15,8 @@ class Game
     until @board.correct_guess? || @code_breaker.number_of_guesses > 12
 
       @code_breaker.take_a_guess(@board)
-      p 'last guesses are:'
-      p @code_breaker.previous_guesses
+      # p 'last guesses are:'
+      # p @code_breaker.previous_guesses
       @board.give_feedback
     end
     p @board.secret_code
