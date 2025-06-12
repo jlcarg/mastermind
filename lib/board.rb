@@ -12,20 +12,12 @@ class Board
     @guess_list[-1] == @secret_code
   end
 
-  # def give_feedback
-  #   if correct_guess?
-  #     puts "Congratulations! You cracked the secret code!\nThe secret code was: #{@guess_list[-1]}"
-  #   else
-  #     exact_matches = check_num_exact_matches
-  #     # Subtract the number of exact matches to avoid counting it twice
-  #     partial_matches = check_num_matches - exact_matches
-  #     puts "Number of exact matches in your last guess: #{exact_matches}"
-  #     puts "Number of color matches(correct color, but wrong position), in your last guess: #{partial_matches}"
-  #   end
-  # end
   def give_feedback
     update_display
-    puts "Congratulations! You cracked the secret code!\nThe secret code was: #{@guess_list[-1]}" if correct_guess?
+    return unless correct_guess?
+
+    puts "\nCongratulations! You cracked the secret code in #{@guess_list.length}!" \
+          "\nThe secret code was: #{@guess_list[-1]}"
   end
 
   def check_num_exact_matches(guess)
@@ -72,9 +64,9 @@ class Board
       '■'.colorize(:green)
     when 'Yellow'
       '■'.colorize(:yellow)
-    when 'Purple'
+    when 'Magenta'
       '■'.colorize(:magenta)
-    when 'Orange'
+    when 'Cyan'
       '■'.colorize(:cyan)
     end
   end
