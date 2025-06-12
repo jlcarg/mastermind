@@ -12,14 +12,6 @@ class Board
     @guess_list[-1] == @secret_code
   end
 
-  def give_feedback
-    update_display
-    return unless correct_guess?
-
-    puts "\nCongratulations! You cracked the secret code in #{@guess_list.length}!" \
-          "\nThe secret code was: #{@guess_list[-1]}"
-  end
-
   def check_num_exact_matches(guess)
     exact_matches = 0
     guess.each_with_index do |color, index|
@@ -42,6 +34,7 @@ class Board
   end
 
   def update_display
+    puts 'Game Board'
     puts "\n--------------------------------------------------"
     @guess_list.each_with_index do |guess, index|
       black_pins = '■'.colorize(:black) * check_num_exact_matches(guess)

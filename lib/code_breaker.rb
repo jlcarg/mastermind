@@ -47,7 +47,7 @@ class CodeBreaker
     update_computer_memory(board)
     new_guess = []
     @computer_memory.each_with_index do |color, idx|
-      new_guess[idx] = memory_slot_empty?(idx) ? %w[Red Blue Green Yellow Purple Orange].sample : color
+      new_guess[idx] = memory_slot_empty?(idx) ? %w[Red Blue Green Yellow Magenta Cyan].sample : color
     end
     board.guess_list << new_guess
     @previous_guesses << new_guess

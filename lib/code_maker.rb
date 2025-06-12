@@ -18,7 +18,6 @@ class CodeMaker
 
   def generate_random_secret_code
     @secret_code = %w[Red Blue Green Yellow Magenta Cyan].sample(4)
-    puts 'Secret code recorded!'
   end
 
   def input_human_secret_code
@@ -28,8 +27,6 @@ class CodeMaker
       secret_code = gets.chomp.split('')
       show_error_message unless choice_is_valid?(secret_code)
     end
-    system('clear')
     @secret_code = translate_code(secret_code)
-    puts 'Alright, your secret code was recorded!'
   end
 end
