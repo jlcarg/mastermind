@@ -42,32 +42,27 @@ class Board
   end
 
   def update_display
+    puts "\n--------------------------------------------------"
     @guess_list.each_with_index do |guess, index|
       black_pins = '■'.colorize(:black) * check_num_exact_matches(guess)
       white_pins = '■'.colorize(:white) * (check_num_matches(guess) - check_num_exact_matches(guess))
-      guess_in_color_blocks = ''
-      guess.each do |color|
-        guess_in_color_blocks << transform_string_to_color_block(color)
-      end
-      puts "Guess number: #{index}: #{guess_in_color_blocks} - #{black_pins}#{white_pins}"
+      puts "Guess number: #{index + 1}: #{colorize_guess(guess)} - #{black_pins}#{white_pins}"
       puts '--------------------------------------------------'
     end
   end
 
   def transform_string_to_color_block(string)
-    case string
-    when 'Red'
-      '■'.colorize(:red)
-    when 'Blue'
-      '■'.colorize(:blue)
-    when 'Green'
-      '■'.colorize(:green)
-    when 'Yellow'
-      '■'.colorize(:yellow)
-    when 'Magenta'
-      '■'.colorize(:magenta)
-    when 'Cyan'
-      '■'.colorize(:cyan)
+    color_and_block_hash = { 'Red' => '■'.colorize(:red), 'Blue' => '■'.colorize(:blue),
+                             'Green' => '■'.colorize(:green), 'Yellow' => '■'.colorize(:yellow),
+                             'Magenta' => '■'.colorize(:magenta), 'Cyan' => '■'.colorize(:cyan) }
+    color_and_block_hash[string]
+  end
+
+  def colorize_guess(array)
+    guess_in_color_blocks = ''
+    array.each do |color|
+      guess_in_color_blocks << transform_string_to_color_block(color)
     end
+    guess_in_color_blocks
   end
 end

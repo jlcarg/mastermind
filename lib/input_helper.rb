@@ -1,6 +1,6 @@
 module InputHelper
   def prompt_for(option)
-    puts "Please make a #{option} of 4 colors\nYou can repeat colors!\n"\
+    puts "\nPlease make a #{option} of 4 colors\nYou can repeat colors!\n"\
          "Select the colors using the corresponding number:\n"\
          "1-Red, 2-Blue, 3-Green, 4-Yellow, 5-Magenta, 6-Cyan\n"\
          "Example: 1125 = Red, Red, Blue, Magenta\n"

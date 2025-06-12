@@ -17,7 +17,7 @@ class CodeMaker
   end
 
   def generate_random_secret_code
-    @secret_code = %w[Red Blue Green Yellow Purple Orange].sample(4)
+    @secret_code = %w[Red Blue Green Yellow Magenta Cyan].sample(4)
     puts 'Secret code recorded!'
   end
 
