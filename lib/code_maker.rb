@@ -17,7 +17,7 @@ class CodeMaker
   end
 
   def generate_random_secret_code
-    @secret_code = %w[Red Blue Green Yellow Magenta Cyan].sample(4)
+    @secret_code = translate_code(Array.new(4) { %w[1 2 3 4 5 6].sample })
   end
 
   def input_human_secret_code

@@ -34,7 +34,7 @@ class CodeBreaker
 
   def take_computer_random_guess(board)
     puts 'M4ch1n3 th1nk1ng...'
-    sleep 5
+    sleep 3
     random_guess = Array.new(4) { %w[1 2 3 4 5 6].sample }
     handle_guess(random_guess, board)
   end
@@ -78,7 +78,7 @@ class CodeBreaker
       take_computer_guess_with_memory(board)
     elsif @number_of_guesses > 3
       puts "[Computer]: Mmmm... Getting closer, let's see... maybe I should guess this one?"
-      sleep 1
+      sleep 2
       take_computer_guess_with_memory(board)
     else
       take_computer_random_guess(board)

@@ -23,11 +23,11 @@ module InputHelper
     translated_code
   end
 
-  def transform_to_number(code)
-    number_hash = { 'Red' => '1', 'Blue' => '2', 'Green' => '3', 'Yellow' => '4', 'Magenta' => '5', 'Cyan' => '6' }
-    untranslated_code = []
-    code.each_with_index do |color, idx|
-      untranslated_code[idx] = number_hash[color] if number_hash.key?(color)
-    end
-  end
+  # def transform_to_number(code)
+  #   number_hash = { 'Red' => '1', 'Blue' => '2', 'Green' => '3', 'Yellow' => '4', 'Magenta' => '5', 'Cyan' => '6' }
+  #   untranslated_code = []
+  #   code.each_with_index do |color, idx|
+  #     untranslated_code[idx] = number_hash[color] if number_hash.key?(color)
+  #   end
+  # end
 end
