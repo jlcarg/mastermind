@@ -70,6 +70,7 @@ class CodeBreaker
     puts 'Progress: [############################-----]'
     sleep 2
     puts 'Download completed.'
+    sleep 2
   end
 
   def take_computer_guess(board)
